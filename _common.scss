@@ -1,0 +1,227 @@
+@import "node_modules/@fortawesome/fontawesome-free/scss/mixins";
+@import "node_modules/@fortawesome/fontawesome-free/scss/variables";
+@import "node_modules/@fortawesome/fontawesome-free/scss/core";
+
+$purple: #1293d8;
+$blue: darken(#72d0f4, 30%);
+$green: #24b47e;
+$red: darken(red, 5%);
+
+$primary-color: $purple !default;
+$secondary-color: $blue !default;
+$tertiary-color: $green !default;
+
+$primary: $primary-color;
+
+$font-color: darken(#6b7c93, 10%) !default;
+$title-color: darken($purple, 30%) !default;
+
+$light-blue: #f6f9fc;
+$light-blue-1: darken($light-blue, 1%);
+$light-blue-2: darken($light-blue, 3%);
+$light-blue-3: darken($light-blue, 10%);
+
+$light-grey: lighten(#f2f4f6, 1.5%);
+$light-grey-1: darken($light-grey, 1%);
+$light-grey-2: darken($light-grey, 2%);
+
+$main-font: "Open Sans", sans-serif !default;
+$title-font: "Open Sans", sans-serif !default;
+
+$title-font-weight: 800 !default;
+
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$breakpoints: (
+  "sm": $screen-sm,
+  "md": $screen-md,
+  "lg": $screen-lg,
+  "xl": $screen-xl
+);
+
+// Small devices
+@mixin small-up {
+   @media (min-width: #{$screen-sm}) {
+       @content;
+   }
+}
+
+// Medium devices
+@mixin medium-up {
+   @media (min-width: #{$screen-md}) {
+       @content;
+   }
+}
+
+// Medium devices
+@mixin medium-down {
+   @media (max-width: #{$screen-md}) {
+       @content;
+   }
+}
+
+// Large devices
+@mixin large-up {
+   @media (min-width: #{$screen-lg}) {
+       @content;
+   }
+}
+
+// Extra large devices
+@mixin extra-large-up {
+   @media (min-width: #{$screen-xl}) {
+       @content;
+   }
+}
+
+%clearfix {
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    clear: both;
+  }
+}
+
+%wrapper {
+  width: 100%;
+  max-width: 600px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  @extend %clearfix;
+  &.wrapper-no-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@mixin spinner($size, $color) {
+  $border-size: $size * 0.1;
+
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+  border-top: $border-size solid $color;
+  border-right: $border-size solid rgba($color, 0.12);
+  border-bottom: $border-size solid rgba($color, 0.12);
+  border-left: $border-size solid $color;
+  animation: 'spinner' 0.5s infinite ease-in;
+}
+
+@mixin button($normal, $active) {
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  padding: 0.6em 0.9em;
+
+  vertical-align: middle;
+  text-align: center;
+  font-family: inherit;
+  background: map-get($normal, background);
+  color: map-get($normal, color);
+  border: map-get($normal, border);
+  box-shadow: map-get($normal, box-shadow);
+  line-height: 1.2;
+
+  .btn-spinner {
+    @include spinner(1em, map-get($normal, color));
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -1px;
+    &:first-child {
+      margin-right: 0.7em;
+    }
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0.6em;
+    }
+  }
+  &:visited, &:link {
+    text-decoration: none !important;
+  }
+  &.small {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  &.extra-small {
+    padding: 0.4em 0.7em;
+    font-size: 0.8em;
+  }
+  &.big {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.6rem;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover, &:active {
+    text-decoration: none;
+    cursor: pointer;
+    background: map-get($active, background);
+    color: map-get($active, color);
+    border: map-get($active, border);
+    transition: color 0.2s ease;
+    transition: background 0.2s ease;
+    transition: border-color 0.2s ease;
+  }
+  &:active {
+    background: darken(map-get($active, background), 5%);
+  }
+  i {
+    font-size: 0.8em;
+    vertical-align: middle;
+    // margin-top: -0.35em;
+    &:first-child {
+      margin-right: 0.7em;
+    }
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0.6em;
+    }
+  }
+
+  &.no-text i, &.no-text .btn-spinner {
+    margin: 0;
+  }
+
+  &[disabled] {
+    &, &:active, &:hover {
+      background: lighten(map-get($active, background), 5%);
+      color: rgba(map-get($active,color), 0.8);
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin color-button($color) {
+  @include button(
+  (
+     background: $color,
+     border: 1px solid transparent,
+     color: #fff,
+     box-shadow: 0 1px 3px rgba(0,0,0,0.2)
+  ),
+  (
+     background: lighten($color, 2%),
+     border: 1px solid transparent,
+     color: #fff,
+     box-shadow: 0 1px 3px rgba(0,0,0,0.2)
+  )
+  );
+}
+
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
