@@ -758,6 +758,14 @@ table.records {
   align-items: center;
 }
 
+i.left {
+  margin-right: 0.5em;
+}
+
+i.right {
+  margin-left: 0.5em;
+}
+
 .loading-overlay {
   position: relative;
   min-height: 250px;
