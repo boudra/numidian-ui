@@ -1,0 +1,41 @@
+$purple: #7853cd !default;
+$blue: darken(#72d0f4, 30%);
+$green: #24b47e;
+$red: darken(red, 5%);
+
+$golden-ratio: 1.61803398875;
+
+$primary-color: purple !default;
+$secondary-color: $blue !default;
+$tertiary-color: $green !default;
+
+$primary: $primary-color;
+
+$font-color: darken(#6b7c93, 10%) !default;
+$title-color: darken($purple, 30%) !default;
+
+$light-blue: #f6f9fc;
+$light-blue-1: darken($light-blue, 1%);
+$light-blue-2: darken($light-blue, 3%);
+$light-blue-3: darken($light-blue, 10%);
+
+$light-grey: lighten(#f2f4f6, 1.5%);
+$light-grey-1: darken($light-grey, 1%);
+$light-grey-2: darken($light-grey, 2%);
+
+$main-font: "Open Sans", sans-serif !default;
+$title-font: "Open Sans", sans-serif !default;
+
+$title-font-weight: 800 !default;
+
+$color-dark-0: rgb(90, 107, 130) !default;
+$color-dark-1: darken($color-dark-0, 10%);
+$color-dark-2: darken($color-dark-1, 10%);
+$color-dark-3: darken($color-dark-2, 10%);
+
+$color-light-0: #ebf1f8 !default;
+$color-light-1: lighten($color-light-0, 1%);
+$color-light-2: lighten($color-light-1, 1%);
+$color-light-3: lighten($color-light-2, 1%);
+$color-light-4: lighten($color-light-3, 2%);
+

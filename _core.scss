@@ -1,5 +1,3 @@
-@import "common";
-
 @import "~normalize.css/normalize.css";
 
 $fa-font-path: "/fonts/";
@@ -15,6 +13,22 @@ html {
 
   --color-accent: #{$primary};
   --color-accent-darker: #{darken($primary, 10%)};
+
+  --primary-color: #{$primary-color};
+
+  --color-dark-0: #{$color-dark-0};
+  --color-dark-1: #{$color-dark-1};
+  --color-dark-2: #{$color-dark-2};
+  --color-dark-3: #{$color-dark-3};
+
+  --color-light-0: #{$color-light-0};
+  --color-light-1: #{$color-light-1};
+  --color-light-2: #{$color-light-2};
+  --color-light-3: #{$color-light-3};
+  --color-light-4: #{$color-light-4};
+
+  --main-font: #{$main-font};
+  --title-font: #{$title-font};
 
   $layer: #ddd;
 
@@ -40,25 +54,40 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
 .clearfix {
   @extend %clearfix;
 }
 
-.wrapper {
+.wrapper, .wrapper-m {
+  @extend %wrapper;
+  max-width: 600px;
+}
+
+.wrapper-fluid {
   @extend %wrapper;
 }
 
-.normal-wrapper {
+.normal-wrapper, .wrapper-l {
   @extend %wrapper;
   max-width: 700px;
 }
 
-.narrow-wrapper {
+.narrow-wrapper, .wrapper-s {
   @extend %wrapper;
   max-width: 400px;
 }
 
-.wide-wrapper {
+.wrapper-xs {
+  @extend %wrapper;
+  max-width: 320px;
+}
+
+.wide-wrapper, .wrapper-xl {
   @extend %wrapper;
   max-width: 960px;
 }
@@ -117,7 +146,7 @@ header.main-header {
   position: relative;
   display: flex;
 
-  background: var(--header-color, $primary-color);
+  background: var(--header-color, desaturate(darken($primary-color, 33%), 20%));
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
 
@@ -157,13 +186,13 @@ nav.menu {
   position: relative;
 
   &.menu-light {
-    color: #ddd;
+    color: $color-light-0;
 
     > ul > li:hover {
-      background: rgba(lighten($primary-color, 30%), 0.2);
+      background: rgba($color-light-1, 0.05);
 
       > .item {
-        color: #fff;
+        color: $color-light-3;
       }
     }
   }
@@ -234,7 +263,7 @@ nav.menu {
         color: inherit;
         display: block;
         padding: 0.4em 0.6em;
-        font-size: 13px;
+        font-size: 14px;
         letter-spacing: 0.05em;
         text-decoration: none;
 
@@ -313,12 +342,6 @@ nav.menu {
 
 .text-center {
   text-align: center;
-}
-
-h1,
-h2,
-h3 {
-  font-family: $title-font;
 }
 
 body {
@@ -459,65 +482,76 @@ $spacing-base: 0.5rem;
   }
 }
 
-.tab-group {
+.tabs {
   display: flex;
-  flex-wrap: wrap;
-  width: auto;
-  $color: var(--input-border);
-  overflow: hidden;
+  flex-direction: column;
 
-  .tab {
-    letter-spacing: 0.4px;
-    text-decoration: none;
-    display: block;
-    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
-    font-weight: 600;
-    background: transparent;
-    color: $font-color;
-    position: relative;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    font-size: 16px;
-    padding: 10px 15px;
-    background: #eee;
+  .tab-content {
+    background: var(--color-light-4);
     border: 1px solid #eee;
-    border-bottom-width: 0;
-
-    &:last-child {
-      border-radius: 0 3px 3px 0;
-    }
-    &:first-child {
-      border-radius: 3px 0 0 3px;
-      margin-left: 0px;
-    }
-
-    &.small {
-      font-size: 12px;
-      padding: 10px 15px;
-    }
-    &.extra-small {
-      font-size: 12px;
-      padding: 5px 15px;
-    }
-    &:hover {
-      z-index: 2;
-    }
-    &:focus {
-      outline: none;
-    }
-    &.active {
-      color: $purple;
-      background: #fff;
-      font-weight: 600;
-      z-index: 3;
-      box-shadow: 0 1px 3px rgba(black, 0.05);
-    }
+    border-top: none;
   }
 
-  &-buttons {
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    $color: var(--input-border);
+    overflow: hidden;
+
     .tab {
+      letter-spacing: 0.4px;
+      text-decoration: none;
+      display: block;
+      flex-grow: 1;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-color);
+      position: relative;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 15px 15px;
+      font-size: 14px;
+      background: #eee;
       border: 1px solid #eee;
+      border-bottom-width: 0;
+
+      &:last-child {
+        border-radius: 0 3px 3px 0;
+      }
+      &:first-child {
+        border-radius: 3px 0 0 3px;
+        margin-left: 0px;
+      }
+
+      &.small {
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+      &.extra-small {
+        font-size: 12px;
+        padding: 5px 15px;
+      }
+      &:hover {
+        z-index: 2;
+      }
+      &:focus {
+        outline: none;
+      }
+      &.active {
+        color: var(--primary-color);
+        background: var(--color-light-4);
+        font-weight: 600;
+        z-index: 3;
+      }
+    }
+
+    &-buttons {
+      .tab {
+        border: 1px solid #eee;
+      }
     }
   }
 }
@@ -576,7 +610,7 @@ $spacing-base: 0.5rem;
 }
 
 .btn-primary {
-  @include color-button($purple);
+  @include color-button($primary-color);
 }
 
 .btn-grey {
@@ -601,21 +635,23 @@ i.right {
 
 .drop-area {
   width: 100%;
-  height: 200px;
-  border: 5px dashed rgba($purple, 0.3);
-  background: rgba($purple, 0.1);
-  font-size: 1.5rem;
-  color: $purple;
+  height: 150px;
+  border: 2px dashed rgba($primary-color, 0.3);
+  background: rgba($primary-color, 0.1);
+  color: $primary-color;
   display: flex;
   opacity: 0.4;
   align-items: center;
+  font-size: 18px;
   justify-content: center;
   position: relative;
   transition: all 0.2s ease;
   border-radius: 3px;
+  text-align: center;
+
   &:hover {
-    background: rgba($purple, 0.2);
-    border: 5px dashed rgba($purple, 1);
+    background: rgba($primary-color, 0.2);
+    border-color: rgba($primary-color, 1);
   }
   input {
     width: 100%;
@@ -625,6 +661,8 @@ i.right {
     height: 100%;
     opacity: 0;
     z-index: 2;
+    font-family: inherit;
+
     &:hover {
       cursor: pointer;
     }
@@ -655,10 +693,13 @@ hr {
   font-size: 0.9em;
   display: block;
   color: var(--text-color);
+  padding-bottom: 0.3em;
+
   &.small {
     text-transform: none;
     font-size: 0.75em;
   }
+
   .icon {
     display: inline-block;
     margin-left: 0.2em;
@@ -750,16 +791,14 @@ hr {
   }
 
   &.form-field-checkbox {
-    display: flex;
-
     input {
-      display: block;
+      display: inline-block;
       margin-right: 0.5em;
       margin-top: 0.2em;
       align-self: start;
     }
 
-    .form-field-checkbox-text {
+    input + span {
       cursor: pointer;
       line-height: 1.4em;
     }
@@ -772,12 +811,6 @@ hr {
     .field-label {
       color: darken($red, 40%);
     }
-    .error {
-      display: block;
-      margin-top: 0.2em;
-      color: darken($red, 5%);
-      font-size: 0.8em;
-    }
     .input {
       border-color: rgba($red, 0.7);
       box-shadow: 0 0px 2px rgba($red, 0.3);
@@ -785,6 +818,13 @@ hr {
         border-color: darken($red, 5%);
       }
     }
+  }
+
+  .error {
+    display: block;
+    margin-top: 0.2em;
+    color: darken($red, 5%);
+    font-size: 0.8em;
   }
 
   &.select-form-field {
@@ -1098,7 +1138,7 @@ table.records {
 }
 
 .modal-title {
-  @extend %title;
+  @extend .title;
 
   margin-top: 0;
   margin-bottom: 0;
@@ -1636,11 +1676,8 @@ i.fa.spin {
   }
 }
 
-%title {
-  font-weight: $title-font-weight;
-  font-family: $title-font;
-  color: #000;
-  letter-spacing: 01;
+.title {
+  font-family: var(--title-font);
 }
 
 .form-field-container,
@@ -1648,3 +1685,136 @@ i.fa.spin {
 .form-field-container-group {
   flex-grow: 1;
 }
+
+.text-xxl {
+  font-size: 1rem * (pow($golden-ratio, 3));
+}
+
+.text-xl {
+  font-size: 1rem * (pow($golden-ratio, 2));
+}
+
+.text-l {
+  font-size: 1rem * ($golden-ratio);
+}
+
+.text-m {
+  font-size: 1rem;
+}
+
+.text-s {
+  font-size: 0.8rem;
+}
+
+.text-xs {
+  font-size: 0.5rem;
+}
+
+.title-l {
+  @extend .text-l;
+  @extend .title;
+  @extend .text-center;
+  @extend .color-dark-3;
+  @extend .py-25;
+  @extend .w-500;
+}
+
+.bg-light-0 {
+  background-color: var(--color-light-0);
+}
+
+.bg-light-1 {
+  background-color: var(--color-light-1);
+}
+
+.bg-light-2 {
+  background-color: var(--color-light-2);
+}
+
+.bg-light-3 {
+  background-color: var(--color-light-3);
+}
+
+.bg-light-4 {
+  background-color: var(--color-light-4);
+}
+
+.color-dark-0 {
+  color: var(--color-dark-0);
+}
+
+.color-dark-1 {
+  color: var(--color-dark-1);
+}
+
+.color-dark-2 {
+  color: var(--color-dark-2);
+}
+
+.color-dark-3 {
+  color: var(--color-dark-3);
+}
+
+$spaceamounts: (5, 10, 15, 20, 25, 50);
+$sides: (top, bottom, left, right);
+$axis: (x, y);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}px;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}px;
+  }
+
+  @each $a in $axis {
+    .m#{$a}-#{$space} {
+      @if $a == "y" {
+        margin-top: #{$space}px;
+        margin-bottom: #{$space}px;
+      } @else {
+        margin-left: #{$space}px;
+        margin-right: #{$space}px;
+      }
+    }
+
+    .p#{$a}-#{$space} {
+      @if $a == "y" {
+        padding-top: #{$space}px;
+        padding-bottom: #{$space}px;
+      } @else {
+        padding-left: #{$space}px;
+        padding-right: #{$space}px;
+      }
+    }
+  }
+
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px;
+    }
+  }
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+$weights: (300, 400, 500, 600, 700, 800);
+
+@each $w in $weights {
+  .w-#{$w} {
+    font-weight: $w;
+  }
+}
+

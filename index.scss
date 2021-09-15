@@ -1,4 +1,5 @@
-@import "base";
+@import "core";
+@import "normalize";
 
 .form-footer {
   border-top: 1px solid rgba($blue, 0.1);
@@ -220,59 +221,6 @@
     padding: 0.6em 0.9em;
     .input {
       padding-right: 7em;
-    }
-  }
-}
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -1px;
-  overflow: hidden;
-  .tab {
-    flex-shrink: 1;
-    flex-grow: 0;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    padding: 1.0em 3em;
-    text-decoration: none;
-    display: block;
-    transition: all 0.15s ease;
-    border: none;
-    font-weight: 500;
-    font-size: 1rem;
-    background: #ddd;
-    color: #777;
-    border: 1px solid rgba(black, 0.1);
-    position: relative;
-    cursor: pointer;
-    margin-left: -1px;
-    &:last-child {
-      border-radius: 0 3px 0px 0;
-    }
-    &:first-child {
-      border-radius: 3px 0 0 0px;
-      margin-left: 0px;
-    }
-    &.small {
-      padding: 0.6rem 1rem;
-    }
-    &.extra-small {
-      padding: 0.4rem 0.7rem;
-      font-size: 0.8rem;
-    }
-    &:hover {
-      background: #eee;
-      z-index: 2;
-    }
-    &:focus {
-      outline: none;
-    }
-    &.active {
-      background: #fff;
-      border-bottom-color: transparent;
-      color: #444;
-      box-shadow: 0 0px 3px rgba(black, 0.1);
     }
   }
 }

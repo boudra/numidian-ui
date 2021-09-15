@@ -2,34 +2,6 @@
 @import "node_modules/@fortawesome/fontawesome-free/scss/variables";
 @import "node_modules/@fortawesome/fontawesome-free/scss/core";
 
-$purple: #1293d8;
-$blue: darken(#72d0f4, 30%);
-$green: #24b47e;
-$red: darken(red, 5%);
-
-$primary-color: $purple !default;
-$secondary-color: $blue !default;
-$tertiary-color: $green !default;
-
-$primary: $primary-color;
-
-$font-color: darken(#6b7c93, 10%) !default;
-$title-color: darken($purple, 30%) !default;
-
-$light-blue: #f6f9fc;
-$light-blue-1: darken($light-blue, 1%);
-$light-blue-2: darken($light-blue, 3%);
-$light-blue-3: darken($light-blue, 10%);
-
-$light-grey: lighten(#f2f4f6, 1.5%);
-$light-grey-1: darken($light-grey, 1%);
-$light-grey-2: darken($light-grey, 2%);
-
-$main-font: "Open Sans", sans-serif !default;
-$title-font: "Open Sans", sans-serif !default;
-
-$title-font-weight: 800 !default;
-
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
@@ -88,11 +60,11 @@ $breakpoints: (
 
 %wrapper {
   width: 100%;
-  max-width: 600px;
   min-width: 320px;
   margin: 0 auto;
   padding: 0 1rem;
   @extend %clearfix;
+
   &.wrapper-no-padding {
     padding-left: 0;
     padding-right: 0;
@@ -148,17 +120,17 @@ $breakpoints: (
   &:visited, &:link {
     text-decoration: none !important;
   }
-  &.small {
+  &.btn-s {
     font-size: 12px;
     padding: 6px 10px;
   }
-  &.extra-small {
+  &.btn-xs {
     padding: 0.4em 0.7em;
     font-size: 0.8em;
   }
-  &.big {
+  &.btn-l {
     font-size: 1.3rem;
-    padding: 0.4rem 0.6rem;
+    // padding: 0.5rem 0.6rem;
   }
   &:focus {
     outline: none;
@@ -221,7 +193,19 @@ $breakpoints: (
   );
 }
 
-.fas {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
 }
+

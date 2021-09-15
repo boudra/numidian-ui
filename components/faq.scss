@@ -1,0 +1,49 @@
+.faq {
+  a {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  h3 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.2em;
+    color: var(--color-dark-2);
+  }
+
+  details {
+    padding: 10px 15px;
+    margin-bottom: 5px;
+
+    &[open] {
+      background: rgba(black, 0.02);
+      border-radius: 3px;
+
+      summary {
+        h3 {
+          font-weight: 600;
+        }
+      }
+    }
+
+    summary {
+      cursor: pointer;
+      outline: none !important;
+
+      // display: flex;
+      h3 {
+        width: 90%;
+        vertical-align: middle;
+      }
+
+      &::marker {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
