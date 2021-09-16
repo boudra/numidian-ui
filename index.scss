@@ -63,7 +63,8 @@
       > .actions {
         height: 100%;
         i {
-          color: rgba($font-color, 0.5);
+          color: var(--text-color);
+          opacity: 0.5;
           cursor: pointer;
           padding: 0.65em 0.5em;
           border-radius: 3px;
@@ -75,14 +76,16 @@
             margin-left: 0.5em;
           }
           &:hover {
-            color: rgba($primary, 1);
+            color: $primary;
+            opacity: 1;
           }
           &:active {
             background: rgba(darken($primary, 20%), 0.05);
           }
           &.active {
             background: rgba(darken($purple, 20%), 0.05);
-            color: rgba(darken($purple, 20%), 1);
+            color: darken($purple, 20%);
+            opacity: 1;
           }
         }
       }
@@ -244,7 +247,7 @@
     &__description {
       margin-top: 5px;
       font-size: 0.8rem;
-      color: lighten($font-color, 10%);
+      color: var(--text-color-4);
     }
 
     &__footer {

@@ -11,9 +11,6 @@ $tertiary-color: $green !default;
 
 $primary: $primary-color;
 
-$font-color: darken(#6b7c93, 10%) !default;
-$title-color: darken($purple, 30%) !default;
-
 $light-blue: #f6f9fc;
 $light-blue-1: darken($light-blue, 1%);
 $light-blue-2: darken($light-blue, 3%);
@@ -28,14 +25,33 @@ $title-font: "Open Sans", sans-serif !default;
 
 $title-font-weight: 800 !default;
 
-$color-dark-0: rgb(90, 107, 130) !default;
-$color-dark-1: darken($color-dark-0, 10%);
-$color-dark-2: darken($color-dark-1, 10%);
-$color-dark-3: darken($color-dark-2, 10%);
+$text-color: rgb(90, 107, 130) !default;
 
-$color-light-0: #ebf1f8 !default;
-$color-light-1: lighten($color-light-0, 1%);
-$color-light-2: lighten($color-light-1, 1%);
-$color-light-3: lighten($color-light-2, 1%);
-$color-light-4: lighten($color-light-3, 2%);
+$text-color-5: $text-color;
+
+$text-color-4: lighten($text-color-5, 6%);
+$text-color-3: lighten($text-color-4, 6%);
+$text-color-2: lighten($text-color-3, 6%);
+$text-color-1: lighten($text-color-2, 6%);
+
+$text-color-6: darken($text-color-5, 6%);
+$text-color-7: darken($text-color-6, 6%);
+$text-color-8: darken($text-color-7, 6%);
+$text-color-9: darken($text-color-8, 6%);
+
+$bg-color: #ebf1f8 !default;
+
+$bg-color-5: $bg-color;
+
+$bg-color-4: lighten($bg-color-5, 1%);
+$bg-color-3: lighten($bg-color-4, 2%);
+$bg-color-2: lighten($bg-color-3, 2%);
+$bg-color-1: lighten($bg-color-2, 2%);
+
+$bg-color-6: darken($bg-color-5, 1%);
+$bg-color-7: darken($bg-color-6, 1%);
+$bg-color-8: darken($bg-color-7, 1%);
+$bg-color-9: darken($bg-color-8, 1%);
+
+$title-color: $text-color-7;
 

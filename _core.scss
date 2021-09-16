@@ -8,38 +8,35 @@ $fa-font-path: "/fonts/";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 html {
-  --text-color: #{$font-color};
-  --text-color-accent: #{$title-color};
-
-  --color-accent: #{$primary};
-  --color-accent-darker: #{darken($primary, 10%)};
-
   --primary-color: #{$primary-color};
 
-  --color-dark-0: #{$color-dark-0};
-  --color-dark-1: #{$color-dark-1};
-  --color-dark-2: #{$color-dark-2};
-  --color-dark-3: #{$color-dark-3};
+  --text-color: #{$text-color};
 
-  --color-light-0: #{$color-light-0};
-  --color-light-1: #{$color-light-1};
-  --color-light-2: #{$color-light-2};
-  --color-light-3: #{$color-light-3};
-  --color-light-4: #{$color-light-4};
+  --text-color-1: #{$text-color-1};
+  --text-color-2: #{$text-color-2};
+  --text-color-3: #{$text-color-3};
+  --text-color-4: #{$text-color-4};
+  --text-color-5: #{$text-color-5};
+  --text-color-6: #{$text-color-6};
+  --text-color-7: #{$text-color-7};
+  --text-color-8: #{$text-color-8};
+  --text-color-9: #{$text-color-9};
+
+  --bg-color-1: #{$bg-color-1};
+  --bg-color-2: #{$bg-color-2};
+  --bg-color-3: #{$bg-color-3};
+  --bg-color-4: #{$bg-color-4};
+  --bg-color-5: #{$bg-color-5};
+  --bg-color-6: #{$bg-color-6};
+  --bg-color-7: #{$bg-color-7};
+  --bg-color-8: #{$bg-color-8};
+  --bg-color-9: #{$bg-color-9};
 
   --main-font: #{$main-font};
   --title-font: #{$title-font};
 
-  $layer: #ddd;
 
-  --color-layer: #{lighten($layer, 9%)};
-  --color-layer-1: #{lighten($layer, 10%)};
-  --color-layer-2: #{lighten($layer, 11%)};
-  --color-layer-3: #{lighten($layer, 12%)};
-  --color-layer-4: #{lighten($layer, 13%)};
-  --color-layer-5: #{lighten($layer, 14%)};
-
-  --input-background: var(--color-layer-5);
+  --input-background: #fff;
   --input-background-focus: #fff;
   --input-border: #ddd;
 }
@@ -93,8 +90,7 @@ html {
 }
 
 body {
-  background-color: $light-blue;
-  color: $font-color;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -186,13 +182,15 @@ nav.menu {
   position: relative;
 
   &.menu-light {
-    color: $color-light-0;
+    > ul > li  > .item {
+      color: #ddd;
+    }
 
     > ul > li:hover {
-      background: rgba($color-light-1, 0.05);
+      background: rgba(white, 0.05);
 
       > .item {
-        color: $color-light-3;
+        color: #fff;
       }
     }
   }
@@ -323,7 +321,7 @@ nav.menu {
           display: block;
           padding: 10px 15px;
           font-size: 14px;
-          color: $font-color;
+          color: var(--text-color);
           border: none;
           border-bottom: 1px solid rgba($purple, 0.1);
           font-weight: 400;
@@ -357,9 +355,8 @@ button {
 }
 
 a.text-link {
-  $color: lighten($font-color, 20%);
-  color: $color;
-  border-bottom: 1px solid lighten($color, 30%);
+  color: var(--text-color-4);
+  border-bottom: 1px solid var(--text-color-4);
   padding-bottom: 3px;
   padding-left: 3px;
   padding-right: 3px;
@@ -495,12 +492,12 @@ $spacing-base: 0.5rem;
     (
       background: rgba(black, 0.05),
       border: 1px solid rgba(black, 0.02),
-      color: darken($font-color, 10%),
+      color: darken($text-color, 10%),
     ),
     (
       background: rgba(black, 0.03),
       border: 1px solid rgba(black, 0.02),
-      color: darken($font-color, 10%),
+      color: darken($text-color, 10%),
     )
   );
 }
@@ -510,12 +507,12 @@ $spacing-base: 0.5rem;
     (
       background: transparent,
       border: 1px solid transparent,
-      color: darken($font-color, 10%),
+      color: darken($text-color, 10%),
     ),
     (
       background: rgba(black, 0.03),
       border: 1px solid transaprent,
-      color: darken($font-color, 10%),
+      color: darken($text-color, 10%),
     )
   );
 }
@@ -685,12 +682,12 @@ table.records {
 
 .alert,
 .flash {
-  color: $font-color;
+  color: var(--text-color);
   background: rgba(black, 0.025);
+  border: 1px solid rgba(black, 0.05);
   text-shadow: 0 1px 0 rgba(white, 0.2);
   border-radius: 3px;
   padding: 0.8em 1.2em;
-  margin-bottom: 1em;
   font-size: 0.9rem;
   position: relative;
   display: block;
@@ -1061,45 +1058,82 @@ i.fa.spin {
   @extend .text-l;
   @extend .title;
   @extend .text-center;
-  @extend .color-dark-3;
+  @extend .text-color-7;
   @extend .py-25;
   @extend .w-500;
 }
 
-.bg-light-0 {
-  background-color: var(--color-light-0);
+.bg-color-1 {
+  background-color: var(--bg-color-1);
 }
 
-.bg-light-1 {
-  background-color: var(--color-light-1);
+.bg-color-2 {
+  background-color: var(--bg-color-2);
 }
 
-.bg-light-2 {
-  background-color: var(--color-light-2);
+.bg-color-3 {
+  background-color: var(--bg-color-3);
 }
 
-.bg-light-3 {
-  background-color: var(--color-light-3);
+.bg-color-4 {
+  background-color: var(--bg-color-4);
 }
 
-.bg-light-4 {
-  background-color: var(--color-light-4);
+.bg-color-5 {
+  background-color: var(--bg-color-5);
 }
 
-.color-dark-0 {
-  color: var(--color-dark-0);
+.bg-color-6 {
+  background-color: var(--bg-color-6);
 }
 
-.color-dark-1 {
-  color: var(--color-dark-1);
+.bg-color-7 {
+  background-color: var(--bg-color-7);
 }
 
-.color-dark-2 {
-  color: var(--color-dark-2);
+.bg-color-8 {
+  background-color: var(--bg-color-8);
 }
 
-.color-dark-3 {
-  color: var(--color-dark-3);
+.bg-color-9 {
+  background-color: var(--bg-color-9);
+}
+
+
+.text-color-1 {
+  background-color: var(--text-color-1);
+}
+
+.text-color-2 {
+  color: var(--text-color-2);
+}
+
+.text-color-3 {
+  color: var(--text-color-3);
+}
+
+.text-color-4 {
+  color: var(--text-color-4);
+}
+
+.text-color-5 {
+  color: var(--text-color-5);
+}
+
+.text-color-6 {
+  color: var(--text-color-6);
+}
+
+.text-color-7 {
+  color: var(--text-color-7);
+}
+
+.text-color-8 {
+  color: var(--text-color-8);
+}
+
+.text-color-9 {
+  color: var(--text-color-9);
 }
 
 $spaceamounts: (5, 10, 15, 20, 25, 50);
@@ -1164,4 +1198,3 @@ $weights: (300, 400, 500, 600, 700, 800);
     font-weight: $w;
   }
 }
-
