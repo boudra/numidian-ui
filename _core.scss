@@ -28,7 +28,6 @@ html {
   --main-font: #{$main-font};
   --title-font: #{$title-font};
 
-
   --input-background: #fff;
   --input-background-focus: #fff;
   --input-border: #ddd;
@@ -336,7 +335,7 @@ nav.menu {
 }
 
 body {
-  font-family: $main-font;
+  font-family: var(--main-font);
 }
 
 button {
@@ -1053,7 +1052,7 @@ i.fa.spin {
   @extend .text-center;
   @extend .text-color-7;
   @extend .py-25;
-  @extend .w-500;
+  @extend .w-600;
 }
 
 .bg-color-1 {
